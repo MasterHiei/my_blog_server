@@ -11,8 +11,7 @@ module Api
         !Article.count.positive? && set_articles
         articles = Article.order('created_at DESC')
         render json: {
-          status: 'SUCCESS',
-          message: 'loaded articles',
+          code: '0',
           data: articles
         }, status: :ok
       end
@@ -54,7 +53,7 @@ module Api
         12.times do
           Article.create(
             title: Faker::Book.title,
-            body: Faker::Lorem.sentence,
+            body: Faker::Lorem.sentence * 500,
             type: Faker::WorldOfWarcraft.hero,
             stars: Faker::Number.between(1, 100),
             created_by: Faker::SwordArtOnline.game_name
