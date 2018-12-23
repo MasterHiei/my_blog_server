@@ -11,7 +11,7 @@ module Api
         !Article.count.positive? && set_articles
         articles = Article.order('created_at DESC')
         render json: {
-          code: '0',
+          code: 0,
           data: articles
         }, status: :ok
       end
